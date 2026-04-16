@@ -5,80 +5,322 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Everything Claude Code (ECC)</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d0d1a; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
-  .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #0d0d1a 0%, #1a1040 100%); }
-  .badge { display: inline-block; background: #fcd34d22; border: 1px solid #fcd34d55; color: #fcd34d; padding: 6px 16px; border-radius: 20px; font-size: 13px; margin-bottom: 24px; }
-  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(135deg, #a78bfa, #fcd34d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
-  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
-  .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 48px; }
-  .stat { text-align: center; }
-  .stat-num { font-size: 2rem; font-weight: 800; color: #fcd34d; }
-  .stat-label { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
-  .buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn { padding: 12px 28px; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-  .btn-primary { background: #7c3aed; color: white; border: none; }
-  .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); }
-  .btn-secondary { background: transparent; color: #a78bfa; border: 2px solid #7c3aed; }
-  .btn-secondary:hover { background: #7c3aed22; transform: translateY(-2px); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1100px; margin: 60px auto; padding: 0 24px; }
-  .card { background: #ffffff08; border: 1px solid #ffffff12; border-radius: 12px; padding: 28px; transition: all 0.2s; }
-  .card:hover { border-color: #7c3aed55; background: #7c3aed0a; transform: translateY(-4px); }
-  .card-icon { font-size: 2rem; margin-bottom: 16px; }
-  .card h3 { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 10px; }
-  .card p { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
-  .install { background: #0f1729; border: 1px solid #ffffff12; border-radius: 12px; max-width: 700px; margin: 0 auto 60px; padding: 32px; }
-  .install h2 { color: #a78bfa; margin-bottom: 20px; font-size: 1.3rem; }
-  pre { background: #020617; border-radius: 8px; padding: 16px; font-size: 0.85rem; overflow-x: auto; color: #7dd3fc; line-height: 1.7; }
-  .comment { color: #475569; }
-  footer { text-align: center; padding: 32px; color: #334155; font-size: 0.85rem; border-top: 1px solid #ffffff08; }
-  footer a { color: #7c3aed; text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+a{color:#a78bfa;text-decoration:none}
+a:hover{color:#fcd34d}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#0a0a14ee;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff0d;padding:14px 40px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,#a78bfa,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:28px;font-size:0.9rem;color:#94a3b8}
+.nav-links a{color:#94a3b8;transition:color 0.2s}
+.nav-links a:hover{color:#e2e8f0}
+.nav-btn{background:#7c3aed;color:white!important;padding:8px 18px;border-radius:7px;font-weight:600;font-size:0.85rem;transition:background 0.2s!important}
+.nav-btn:hover{background:#6d28d9!important;color:white!important}
+
+/* HERO */
+.hero{text-align:center;padding:140px 20px 80px;background:radial-gradient(ellipse at 50% 0%,#1a0a3a 0%,#0a0a14 60%)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fcd34d15;border:1px solid #fcd34d40;color:#fcd34d;padding:7px 18px;border-radius:24px;font-size:0.8rem;font-weight:600;margin-bottom:28px;letter-spacing:0.05em}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:20px}
+.gradient-text{background:linear-gradient(135deg,#a78bfa 0%,#fcd34d 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:1.15rem;color:#94a3b8;max-width:580px;margin:0 auto 48px;line-height:1.7}
+.stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:52px}
+.stat-num{font-size:2.2rem;font-weight:900;color:#fcd34d;display:block}
+.stat-label{font-size:0.8rem;color:#475569;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{padding:13px 30px;border-radius:9px;font-size:0.95rem;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:#7c3aed;color:white;box-shadow:0 4px 20px #7c3aed44}
+.btn-primary:hover{background:#6d28d9;transform:translateY(-2px);color:white;box-shadow:0 6px 28px #7c3aed66}
+.btn-ghost{background:transparent;color:#a78bfa;border:1.5px solid #7c3aed55}
+.btn-ghost:hover{background:#7c3aed15;transform:translateY(-2px);color:#a78bfa}
+
+/* SECTIONS */
+section{padding:80px 24px;max-width:1100px;margin:0 auto}
+.section-label{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7c3aed;margin-bottom:12px}
+h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:16px;color:#f1f5f9}
+.section-sub{color:#64748b;font-size:1rem;max-width:520px;margin-bottom:48px}
+
+/* INSTALL */
+.install-box{background:#0d1117;border:1px solid #ffffff12;border-radius:16px;overflow:hidden;max-width:780px;margin:0 auto}
+.install-header{background:#161b22;padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #ffffff0d}
+.dot{width:12px;height:12px;border-radius:50%}
+.install-tabs{display:flex;gap:0}
+.tab{padding:10px 20px;font-size:0.82rem;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.tab.active{color:#a78bfa;border-bottom-color:#a78bfa}
+pre{padding:24px;font-size:0.83rem;line-height:1.9;overflow-x:auto;color:#7dd3fc;font-family:'Fira Code','Consolas',monospace}
+.cm{color:#475569}
+.kw{color:#c084fc}
+.st{color:#86efac}
+
+/* FEATURE GRID */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#ffffff06;border:1px solid #ffffff0d;border-radius:14px;padding:28px;transition:all 0.25s}
+.card:hover{border-color:#7c3aed44;background:#7c3aed08;transform:translateY(-3px)}
+.card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px}
+.icon-purple{background:#7c3aed22}
+.icon-yellow{background:#fcd34d22}
+.icon-blue{background:#3b82f622}
+.icon-green{background:#22c55e22}
+.icon-red{background:#ef444422}
+.icon-pink{background:#ec489922}
+.card h3{font-size:1rem;font-weight:700;color:#e2e8f0;margin-bottom:10px}
+.card p{font-size:0.875rem;color:#64748b;line-height:1.65}
+.tag{display:inline-block;background:#7c3aed22;color:#a78bfa;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:14px}
+
+/* WORKFLOW TABLE */
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #ffffff0d}
+table{width:100%;border-collapse:collapse;font-size:0.875rem}
+thead{background:#ffffff06}
+th{padding:14px 20px;text-align:left;color:#94a3b8;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid #ffffff0d}
+td{padding:13px 20px;border-bottom:1px solid #ffffff06;color:#cbd5e1}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#ffffff03}
+code{background:#ffffff0d;color:#a78bfa;padding:2px 7px;border-radius:5px;font-size:0.82rem;font-family:'Fira Code',monospace}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tip{background:#ffffff04;border:1px solid #ffffff08;border-radius:10px;padding:20px}
+.tip-key{background:#0d1117;color:#fcd34d;padding:4px 10px;border-radius:6px;font-size:0.8rem;font-family:monospace;font-weight:700;display:inline-block;margin-bottom:10px}
+.tip p{font-size:0.83rem;color:#64748b}
+
+/* HARNESS TABLE */
+.harness{overflow-x:auto}
+.harness table{min-width:600px}
+.check{color:#22c55e;font-weight:700}
+.partial{color:#fcd34d}
+
+/* FOOTER */
+footer{background:#070710;border-top:1px solid #ffffff08;padding:48px 24px;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:20px;font-size:0.875rem}
+.footer-bottom{color:#334155;font-size:0.8rem;margin-top:8px}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(to right,transparent,#ffffff0d,transparent);margin:0 24px}
 </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-logo">⚡ ECC</div>
+  <div class="nav-links">
+    <a href="#install">Install</a>
+    <a href="#features">Features</a>
+    <a href="#workflows">Workflows</a>
+    <a href="#tips">Tips</a>
+    <a href="https://github.com/mrebrahim/everything-claude-code" class="nav-btn">GitHub →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="badge">🏆 Anthropic Hackathon Winner</div>
-  <h1>Everything Claude Code</h1>
-  <p class="subtitle">The performance optimization system for AI agent harnesses. Skills, instincts, memory, security, and research-first development.</p>
+  <div class="badge">🏆 Anthropic Hackathon Winner · Built by @affaan-m</div>
+  <h1><span class="gradient-text">Everything Claude Code</span></h1>
+  <p class="subtitle">The performance optimization system for AI agent harnesses. Skills, instincts, memory, security, and research-first development — battle-tested over 10 months of daily production use.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">48</div><div class="stat-label">Agents</div></div>
-    <div class="stat"><div class="stat-num">183</div><div class="stat-label">Skills</div></div>
-    <div class="stat"><div class="stat-num">79</div><div class="stat-label">Commands</div></div>
-    <div class="stat"><div class="stat-num">158K+</div><div class="stat-label">GitHub Stars</div></div>
+    <div><span class="stat-num">48</span><span class="stat-label">Agents</span></div>
+    <div><span class="stat-num">183</span><span class="stat-label">Skills</span></div>
+    <div><span class="stat-num">79</span><span class="stat-label">Commands</span></div>
+    <div><span class="stat-num">158K+</span><span class="stat-label">GitHub Stars</span></div>
+    <div><span class="stat-num">12+</span><span class="stat-label">Language Ecosystems</span></div>
   </div>
-  <div class="buttons">
-    <a href="https://github.com/mrebrahim/everything-claude-code" class="btn btn-primary">⭐ View on GitHub</a>
-    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-shortform-guide.md" class="btn btn-secondary">📖 Read the Guide</a>
+  <div class="hero-btns">
+    <a href="#install" class="btn btn-primary">🚀 Quick Install</a>
+    <a href="https://github.com/mrebrahim/everything-claude-code" class="btn btn-ghost">⭐ View Fork</a>
+    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-shortform-guide.md" class="btn btn-ghost">📖 Read the Guide</a>
   </div>
 </div>
 
-<div class="grid">
-  <div class="card"><div class="card-icon">🤖</div><h3>48 Specialized Agents</h3><p>Planner, architect, TDD guide, security reviewer, code reviewer, and more — each with a focused scope.</p></div>
-  <div class="card"><div class="card-icon">⚡</div><h3>183 Skills</h3><p>Primary workflow surface covering TDD, security, frontend, backend, content, research, and deployment patterns.</p></div>
-  <div class="card"><div class="card-icon">🪝</div><h3>Smart Hooks</h3><p>Trigger-based automations that fire on tool events — auto-format, secret detection, session memory, and more.</p></div>
-  <div class="card"><div class="card-icon">🧠</div><h3>Continuous Learning</h3><p>Instinct-based system that automatically learns your patterns across sessions and evolves into reusable skills.</p></div>
-  <div class="card"><div class="card-icon">🔒</div><h3>AgentShield Security</h3><p>1282 tests, 102 rules scanning for secrets, injection risks, MCP vulnerabilities, and permission issues.</p></div>
-  <div class="card"><div class="card-icon">🌐</div><h3>Cross-Platform</h3><p>Works across Claude Code, Codex, Cursor, OpenCode, and Gemini with consistent behavior everywhere.</p></div>
-</div>
+<div class="divider"></div>
 
-<div class="install">
-  <h2>🚀 Quick Install</h2>
-  <pre><span class="comment"># Step 1: Install Plugin in Claude Code</span>
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
-/plugin install everything-claude-code@everything-claude-code
+<!-- INSTALL -->
+<section id="install" style="max-width:800px">
+  <div class="section-label">Get Started</div>
+  <h2>Quick Install</h2>
+  <p class="section-sub">Up and running in under 2 minutes.</p>
 
-<span class="comment"># Step 2: Clone & Install Rules</span>
+  <div class="install-box">
+    <div class="install-header">
+      <div class="dot" style="background:#ff5f57"></div>
+      <div class="dot" style="background:#febc2e"></div>
+      <div class="dot" style="background:#28c840"></div>
+      <span style="color:#475569;font-size:0.8rem;margin-left:8px">terminal</span>
+    </div>
+    <pre><span class="cm"># Step 1: Install Plugin in Claude Code</span>
+<span class="kw">/plugin</span> marketplace add https://github.com/affaan-m/everything-claude-code
+<span class="kw">/plugin</span> install everything-claude-code@everything-claude-code
+
+<span class="cm"># Step 2: Clone & Install Rules</span>
 git clone https://github.com/mrebrahim/everything-claude-code.git
 cd everything-claude-code
 ./install.sh --profile full
 
-<span class="comment"># Step 3: Start Using</span>
-/ecc:plan "Add user authentication"</pre>
-</div>
+<span class="cm"># Step 3: Start Using</span>
+<span class="kw">/ecc:plan</span> <span class="st">"Add user authentication"</span></pre>
+  </div>
 
+  <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+    <div class="card" style="padding:18px">
+      <div style="font-size:0.78rem;color:#475569;margin-bottom:6px">WINDOWS</div>
+      <code style="font-size:0.78rem">.\install.ps1 --profile full</code>
+    </div>
+    <div class="card" style="padding:18px">
+      <div style="font-size:0.78rem;color:#475569;margin-bottom:6px">LANGUAGE SPECIFIC</div>
+      <code style="font-size:0.78rem">./install.sh typescript python</code>
+    </div>
+    <div class="card" style="padding:18px">
+      <div style="font-size:0.78rem;color:#475569;margin-bottom:6px">NPM</div>
+      <code style="font-size:0.78rem">npx ecc-install typescript</code>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">What's Inside</div>
+  <h2>Complete System, Not Just Configs</h2>
+  <p class="section-sub">Every component is designed to work together as a unified performance system.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon icon-purple">🤖</div>
+      <h3>Skills — Primary Workflow Surface</h3>
+      <p>183 skills covering TDD, security, frontend, backend, content, research, and deployment. Skills are scoped workflow bundles: reusable prompts, structure, and codemaps. The durable logic lives here, not in commands.</p>
+      <div><span class="tag">~/.claude/skills/</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-yellow">👥</div>
+      <h3>Subagents — Delegated Execution</h3>
+      <p>48 specialized agents that your orchestrator can delegate tasks to with limited scopes. Planner, architect, TDD guide, code reviewer, security reviewer, build resolver, and more. Each scoped with specific tool permissions.</p>
+      <div><span class="tag">~/.claude/agents/</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-blue">🪝</div>
+      <h3>Hooks — Trigger Automations</h3>
+      <p>Fire on PreToolUse, PostToolUse, Stop, SessionStart, and more. Auto-format after edits, warn on console.log, block git push for review, remind about tmux for long-running commands.</p>
+      <div><span class="tag">hooks/hooks.json</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-green">📋</div>
+      <h3>Rules — Always-Follow Guidelines</h3>
+      <p>Modular .md files grouped by concern: security, coding-style, testing, git-workflow, agents, performance. Install only the languages you need: common + typescript/python/golang/swift/php.</p>
+      <div><span class="tag">~/.claude/rules/</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-red">🔒</div>
+      <h3>AgentShield — Security Auditor</h3>
+      <p>1282 tests, 98% coverage, 102 static rules. Scans CLAUDE.md, MCP configs, hooks, and agents for secrets, injection risks, and vulnerabilities. Red-team/blue-team/auditor pipeline with Opus.</p>
+      <div><span class="tag">npx ecc-agentshield scan</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon icon-pink">🧠</div>
+      <h3>Continuous Learning v2</h3>
+      <p>Instinct-based system automatically learns your patterns across sessions with confidence scoring. Import/export instincts, cluster them into skills with /evolve. Your setup gets smarter over time.</p>
+      <div><span class="tag">/instinct-status</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORKFLOWS -->
+<section id="workflows">
+  <div class="section-label">Common Workflows</div>
+  <h2>What Do You Want to Do?</h2>
+  <p class="section-sub">Quick reference for the most common tasks.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>I want to…</th><th>Command</th><th>Agent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Plan a new feature</td><td><code>/ecc:plan "Add auth"</code></td><td>planner</td></tr>
+        <tr><td>Design system architecture</td><td><code>/ecc:plan + architect</code></td><td>architect</td></tr>
+        <tr><td>Write code with tests first</td><td><code>/tdd</code></td><td>tdd-guide</td></tr>
+        <tr><td>Review code I just wrote</td><td><code>/code-review</code></td><td>code-reviewer</td></tr>
+        <tr><td>Fix a failing build</td><td><code>/build-fix</code></td><td>build-error-resolver</td></tr>
+        <tr><td>Run end-to-end tests</td><td><code>/e2e</code></td><td>e2e-runner</td></tr>
+        <tr><td>Find security vulnerabilities</td><td><code>/security-scan</code></td><td>security-reviewer</td></tr>
+        <tr><td>Remove dead code</td><td><code>/refactor-clean</code></td><td>refactor-cleaner</td></tr>
+        <tr><td>Review Python code</td><td><code>/python-review</code></td><td>python-reviewer</td></tr>
+        <tr><td>Review Go code</td><td><code>/go-review</code></td><td>go-reviewer</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="section-label">Tips & Tricks</div>
+  <h2>Keyboard Shortcuts & Pro Tips</h2>
+  <p class="section-sub">From 10 months of daily Claude Code use.</p>
+
+  <div class="tips-grid">
+    <div class="tip"><div class="tip-key">Ctrl+U</div><p>Delete entire line — faster than backspace spam</p></div>
+    <div class="tip"><div class="tip-key">!</div><p>Quick bash command prefix without leaving Claude</p></div>
+    <div class="tip"><div class="tip-key">@</div><p>Search and reference files in your codebase</p></div>
+    <div class="tip"><div class="tip-key">Shift+Enter</div><p>Multi-line input for complex prompts</p></div>
+    <div class="tip"><div class="tip-key">Tab</div><p>Toggle thinking display on/off</p></div>
+    <div class="tip"><div class="tip-key">Esc Esc</div><p>Interrupt Claude and restore your code</p></div>
+    <div class="tip"><div class="tip-key">/fork</div><p>Fork conversations for parallel non-overlapping tasks</p></div>
+    <div class="tip"><div class="tip-key">/compact</div><p>Manually trigger context compaction at logical breakpoints</p></div>
+    <div class="tip"><div class="tip-key">/cost</div><p>Monitor token spending during the current session</p></div>
+    <div class="tip"><div class="tip-key">/clear</div><p>Between unrelated tasks — free instant context reset</p></div>
+  </div>
+
+  <div style="margin-top:40px;background:#0d1117;border:1px solid #fcd34d22;border-radius:12px;padding:24px">
+    <div style="color:#fcd34d;font-weight:700;margin-bottom:12px">⚡ Token Optimization Settings</div>
+    <pre style="padding:0;background:none"><span class="cm">// ~/.claude/settings.json</span>
+{
+  <span class="st">"model"</span>: <span class="st">"sonnet"</span>,
+  <span class="st">"env"</span>: {
+    <span class="st">"MAX_THINKING_TOKENS"</span>: <span class="st">"10000"</span>,        <span class="cm">// ~70% reduction in thinking cost</span>
+    <span class="st">"CLAUDE_AUTOCOMPACT_PCT_OVERRIDE"</span>: <span class="st">"50"</span>, <span class="cm">// compact earlier = better quality</span>
+    <span class="st">"CLAUDE_CODE_SUBAGENT_MODEL"</span>: <span class="st">"haiku"</span>   <span class="cm">// cheaper subagents</span>
+  }
+}</pre>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CROSS PLATFORM -->
+<section>
+  <div class="section-label">Cross-Platform</div>
+  <h2>Works Everywhere</h2>
+  <p class="section-sub">The same repo ships cleanly across all major AI coding harnesses.</p>
+  <div class="harness">
+    <div class="table-wrap">
+      <table style="min-width:600px">
+        <thead><tr><th>Feature</th><th>Claude Code</th><th>Cursor</th><th>Codex</th><th>OpenCode</th></tr></thead>
+        <tbody>
+          <tr><td>Agents</td><td class="check">48</td><td class="partial">Shared</td><td class="partial">Shared</td><td class="partial">12</td></tr>
+          <tr><td>Skills</td><td class="check">183</td><td class="partial">Shared</td><td class="partial">10</td><td class="partial">37</td></tr>
+          <tr><td>Commands</td><td class="check">79</td><td class="partial">Shared</td><td class="partial">Instruction-based</td><td class="partial">31</td></tr>
+          <tr><td>Hook Events</td><td class="partial">8 types</td><td class="check">15 types</td><td>None yet</td><td class="partial">11 types</td></tr>
+          <tr><td>MCP Servers</td><td class="check">14</td><td class="partial">Shared</td><td class="partial">7</td><td class="check">Full</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  Fork by <a href="https://github.com/mrebrahim">mrebrahim</a> · Original by <a href="https://github.com/affaan-m">affaan-m</a> · <a href="https://github.com/mrebrahim/everything-claude-code">GitHub Repo</a>
+  <div class="footer-links">
+    <a href="https://github.com/mrebrahim/everything-claude-code">My Fork (mrebrahim)</a>
+    <a href="https://github.com/affaan-m/everything-claude-code">Original Repo</a>
+    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-shortform-guide.md">Shortform Guide</a>
+    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-longform-guide.md">Longform Guide</a>
+    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-security-guide.md">Security Guide</a>
+  </div>
+  <div class="footer-bottom">Fork by <a href="https://github.com/mrebrahim">mrebrahim</a> · Original by <a href="https://github.com/affaan-m">affaan-m</a> · MIT License</div>
 </footer>
 
 </body>
