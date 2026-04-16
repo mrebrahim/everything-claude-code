@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everything Claude Code (ECC)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d1a; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
+  .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #0d0d1a 0%, #1a1040 100%); }
+  .badge { display: inline-block; background: #fcd34d22; border: 1px solid #fcd34d55; color: #fcd34d; padding: 6px 16px; border-radius: 20px; font-size: 13px; margin-bottom: 24px; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(135deg, #a78bfa, #fcd34d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+  .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 48px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #fcd34d; }
+  .stat-label { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+  .buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-primary { background: #7c3aed; color: white; border: none; }
+  .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: #a78bfa; border: 2px solid #7c3aed; }
+  .btn-secondary:hover { background: #7c3aed22; transform: translateY(-2px); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1100px; margin: 60px auto; padding: 0 24px; }
+  .card { background: #ffffff08; border: 1px solid #ffffff12; border-radius: 12px; padding: 28px; transition: all 0.2s; }
+  .card:hover { border-color: #7c3aed55; background: #7c3aed0a; transform: translateY(-4px); }
+  .card-icon { font-size: 2rem; margin-bottom: 16px; }
+  .card h3 { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 10px; }
+  .card p { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
+  .install { background: #0f1729; border: 1px solid #ffffff12; border-radius: 12px; max-width: 700px; margin: 0 auto 60px; padding: 32px; }
+  .install h2 { color: #a78bfa; margin-bottom: 20px; font-size: 1.3rem; }
+  pre { background: #020617; border-radius: 8px; padding: 16px; font-size: 0.85rem; overflow-x: auto; color: #7dd3fc; line-height: 1.7; }
+  .comment { color: #475569; }
+  footer { text-align: center; padding: 32px; color: #334155; font-size: 0.85rem; border-top: 1px solid #ffffff08; }
+  footer a { color: #7c3aed; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">🏆 Anthropic Hackathon Winner</div>
+  <h1>Everything Claude Code</h1>
+  <p class="subtitle">The performance optimization system for AI agent harnesses. Skills, instincts, memory, security, and research-first development.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">48</div><div class="stat-label">Agents</div></div>
+    <div class="stat"><div class="stat-num">183</div><div class="stat-label">Skills</div></div>
+    <div class="stat"><div class="stat-num">79</div><div class="stat-label">Commands</div></div>
+    <div class="stat"><div class="stat-num">158K+</div><div class="stat-label">GitHub Stars</div></div>
+  </div>
+  <div class="buttons">
+    <a href="https://github.com/mrebrahim/everything-claude-code" class="btn btn-primary">⭐ View on GitHub</a>
+    <a href="https://github.com/affaan-m/everything-claude-code/blob/main/the-shortform-guide.md" class="btn btn-secondary">📖 Read the Guide</a>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card"><div class="card-icon">🤖</div><h3>48 Specialized Agents</h3><p>Planner, architect, TDD guide, security reviewer, code reviewer, and more — each with a focused scope.</p></div>
+  <div class="card"><div class="card-icon">⚡</div><h3>183 Skills</h3><p>Primary workflow surface covering TDD, security, frontend, backend, content, research, and deployment patterns.</p></div>
+  <div class="card"><div class="card-icon">🪝</div><h3>Smart Hooks</h3><p>Trigger-based automations that fire on tool events — auto-format, secret detection, session memory, and more.</p></div>
+  <div class="card"><div class="card-icon">🧠</div><h3>Continuous Learning</h3><p>Instinct-based system that automatically learns your patterns across sessions and evolves into reusable skills.</p></div>
+  <div class="card"><div class="card-icon">🔒</div><h3>AgentShield Security</h3><p>1282 tests, 102 rules scanning for secrets, injection risks, MCP vulnerabilities, and permission issues.</p></div>
+  <div class="card"><div class="card-icon">🌐</div><h3>Cross-Platform</h3><p>Works across Claude Code, Codex, Cursor, OpenCode, and Gemini with consistent behavior everywhere.</p></div>
+</div>
+
+<div class="install">
+  <h2>🚀 Quick Install</h2>
+  <pre><span class="comment"># Step 1: Install Plugin in Claude Code</span>
+/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+/plugin install everything-claude-code@everything-claude-code
+
+<span class="comment"># Step 2: Clone & Install Rules</span>
+git clone https://github.com/mrebrahim/everything-claude-code.git
+cd everything-claude-code
+./install.sh --profile full
+
+<span class="comment"># Step 3: Start Using</span>
+/ecc:plan "Add user authentication"</pre>
+</div>
+
+<footer>
+  Fork by <a href="https://github.com/mrebrahim">mrebrahim</a> · Original by <a href="https://github.com/affaan-m">affaan-m</a> · <a href="https://github.com/mrebrahim/everything-claude-code">GitHub Repo</a>
+</footer>
+
+</body>
+</html>
